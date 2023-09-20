@@ -40,7 +40,7 @@ def main():
             if not is_valid_key(key):
                 continue
             
-            sec_key_choice = input("Do you have secondary key [Y/n]: ")
+            sec_key_choice = input("Do you have secondary key? [Y/n]: ")
             if sec_key_choice in ['Y', 'y']:
                 sec_key = input("Input the key (with length at least 7):\n")
                 if not is_valid_sec_key(sec_key):
