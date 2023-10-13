@@ -7,7 +7,7 @@ class TextNormalizer:
         self.pairs = []
 
     def normalise(self):
-        result_str = ""
+        result_str = ''
         for char in self.text:
             if char == ' ':
                 continue
@@ -18,6 +18,8 @@ class TextNormalizer:
             result_str += char
         
         self.text = result_str
+
+        return result_str
 
     def split_into_pairs(self):
         self.pairs = [self.text[i : i + 2] for i in range(0, len(self.text), 2)]
