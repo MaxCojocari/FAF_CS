@@ -9,17 +9,20 @@ perm_handler = PermutationHandler()
 def gen_random_key(length=8):
     return ''.join(random.choice(LETTERS) for _ in range(length))
 
+def generate_random_binary_string(length=64):
+    return ''.join(random.choice(['0', '1']) for _ in range(length))
+
 def pretty_print(s, length_seq):
     out = ''
     for i in range(0, len(s) - length_seq + 1, length_seq):
         out += s[i:i+length_seq] + ' '
     return out
 
-def get_response(key):
+def get_response(key, isBinary):
     print("Permuted Choice Table (PC-1):")
     perm_handler.print_pc_1()
-
-    encrypted_key = ascii_handler.get_binary(key)
+    
+    encrypted_key = key if isBinary else ascii_handler.get_binary(key) 
     print(f"K  = {pretty_print(encrypted_key, 8)}")
 
     permuted_key = perm_handler.get_permuted(encrypted_key)
@@ -42,13 +45,14 @@ def main():
                 print("The key does not adhere to the ASCII format!")
                 continue
             
-            get_response(key)
+            get_response(key, False)
             continue
 
         elif choice == 1:
-            key = gen_random_key()
+            # key = gen_random_key()
+            key = generate_random_binary_string()
             print(f"Random key: {key}")
-            get_response(key)
+            get_response(key, True)
             continue
             
         elif choice == 2:
