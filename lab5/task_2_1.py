@@ -15,7 +15,7 @@ class RSA:
         phi_n = (self.p - 1)*(self.q - 1)
 
         while True:
-            x = random.randint(1, phi_n - 1) # Fermat's numbers
+            x = random.randint(1, phi_n - 1)
             if math.gcd(x, phi_n) == 1:
                 e = x
                 break
